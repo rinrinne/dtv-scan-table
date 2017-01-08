@@ -29,7 +29,7 @@ RUN set -x \
     && iconvconfig /usr/lib/x86_64-linux-gnu/gconv \
     && mkdir -p /var/run/v4l-utils
 
-ADD ch.py $HOME_DIR/
+ADD . $HOME_DIR/
  
 VOLUME /var/run/v4l-utils
 
