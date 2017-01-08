@@ -51,10 +51,10 @@ if __name__ == '__main__':
                 channels[t].append(channel)
 
 
-    os.mkdir('initials')
+    os.mkdirs('home/initials')
 
     for t in channels:
-        with open(os.path.join('initials', '{}.ch'.format(t)), 'w') as f:
+        with open(os.path.join(i'home', 'initials', '{}.ch'.format(t)), 'w') as f:
             for ch in channels[t]:
                 f.write(entry(t, ch))
 
