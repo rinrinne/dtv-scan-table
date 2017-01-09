@@ -3,6 +3,7 @@ LABEL maintainer "rinrin.ne@gmail.com"
 
 ARG BUILD_PACKAGES="build-essential git autoconf automake libtool libudev-dev gettext pkg-config"
 ARG INSTALLED_PACKAGES="python"
+ARG V4L_BRANCH="stable-1.10"
 
 ENV HOME_DIR="/home/v4l-utils"
 
@@ -13,7 +14,7 @@ WORKDIR $HOME_DIR
 RUN set -x \
     && apt-get update \
     && apt-get install -y $BUILD_PACKAGES \
-    && git clone git://linuxtv.org/v4l-utils.git module \
+    && git clone git://linuxtv.org/v4l-utils.git -b $V4L_BRANCH module \
     && cd module \
     && ./bootstrap.sh \
     && ./configure --disable-doxygen-doc --disable-doxygen-dot --disable-libv4l --disable-v4l2-compliance-libv4l --disable-v4l2-ctl-libv4l --disable-qv4l2 --enable-gconv --without-jpeg --with-gconvdir=/usr/lib/x86_64-linux-gnu/gconv \
@@ -26,7 +27,6 @@ RUN set -x \
     && rm -rf /var/lib/apt/lists/* \
     && echo /usr/local/lib > /etc/ld.so.conf.d/locallib.conf \
     && ldconfig \
-    && iconvconfig /usr/lib/x86_64-linux-gnu/gconv \
     && mkdir -p /var/run/v4l-utils
 
 ADD home $HOME_DIR/
