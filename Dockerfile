@@ -33,4 +33,4 @@ ADD home $HOME_DIR/
  
 VOLUME /var/run/v4l-utils
 
-#CMD ["./scan.sh"]
+CMD ["./scan.sh"]

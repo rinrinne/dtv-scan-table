@@ -1,6 +1,8 @@
 #!/bin/bash
 
-OUT=/var/run/dtv-jp-tools
+OUT=/var/run/v4l-utils
+
+export GCONV_PATH=/usr/local/lib/gconv
 
 echo ISDBT Scan
 dvbv5-scan -C JP -a 1 -o $OUT/isdbt.conf $HOME_DIR/initials/gr.ch
